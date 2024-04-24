@@ -7,10 +7,7 @@ import com.demo.cabbookingapplication.serviceImpl.DriverServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/driver")
@@ -22,5 +19,10 @@ public class DriverController {
     @PostMapping("/registerDriver")
     public ResponseEntity<Driver> register(@RequestBody Driver driver) throws DriverException {
         return new ResponseEntity<Driver>(driverService.insertDriver(driver), HttpStatus.CREATED);
+    }
+
+    @PostMapping("/onboard/{isTrue}")
+    public String onboardDriver(@PathVariable boolean isTrue,@RequestParam("DriverId") Integer driverId)throws DriverException{
+        return driverService.onboardDriver(isTrue,driverId);
     }
 }

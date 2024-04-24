@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,9 @@ public class Driver {
     private String email;
 
     private String userRole;
+
+    @Value("${some.key:false}")
+    private boolean onboard;
 
     @OneToOne
     @JsonIgnore
