@@ -19,7 +19,7 @@ public class DriverServiceImpl implements DriverIService {
     public Driver insertDriver(Driver driver) throws DriverException {
         Optional<Driver> findDriver = driverRepository.findByLicenceNo(driver.getLicenceNo());
         if(findDriver.isPresent()) {
-            throw new DriverException("Driver is already registered");
+            throw new DriverException("Driver is already registered ");
         }
         else {
             if(driver.getUserRole().equalsIgnoreCase("Driver")) {
