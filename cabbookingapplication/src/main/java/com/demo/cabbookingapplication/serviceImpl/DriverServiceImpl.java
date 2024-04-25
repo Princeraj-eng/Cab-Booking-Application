@@ -33,7 +33,7 @@ public class DriverServiceImpl implements DriverIService {
 
     @Override
     public String onboardDriver(boolean isTrue, Integer driverId) throws DriverException{
-        
+
         Optional<Driver> findDriverOpt = driverRepository.findById(driverId);
 
         // First, check if the driver was found
